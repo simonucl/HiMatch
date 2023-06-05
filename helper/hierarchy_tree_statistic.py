@@ -46,7 +46,10 @@ class DatasetStatistic(object):
                 self.init_prior_prob_dict[parent] = dict()
 
                 for child in self.hierarchical_label_dict[parent]:
-                    assert child not in self.label_trees.keys()
+                    # print(self.hierarchical_label_dict[parent], parent, self.label_trees.keys())
+                    # import sys
+                    # sys.exit(1)
+                    assert child not in self.label_trees.keys(), f'{child} in {self.label_trees.keys()}'
                     self.init_prior_prob_dict[parent][child] = 0
                     child_tree = Tree(child)
                     parent_tree.add_child(child_tree)
@@ -150,12 +153,12 @@ class DatasetStatistic(object):
             # sample label : list of labels
             for label in sample_label:
                 path_flag = False
-                assert label in self.label_vocab
+                assert label in self.label_vocab, f'{label} not in {self.label_vocab}'
                 # for eurlex
                 # level_num_dict[self.label_trees[label]._depth] += 1
 
                 if label in self.init_prior_prob_dict.keys():
-                    if label in ['CS', 'Medical', 'Civil', 'ECE', 'biochemistry', 'MAE', 'Psychology']:
+                    if label in ['Top/Features', 'Top/Opinion', 'Top/Classifieds', 'Top/News']:
                         prob_dict[ROOT_LABEL][label] += 1
                         self.prior_prob_dict[ROOT_LABEL][label] += 1
                         if 'train' in file_name or 'val' in file_name:

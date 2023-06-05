@@ -8,16 +8,18 @@ vectorizer = CountVectorizer()
 transformer = TfidfTransformer()
 tfidf_vec = TfidfVectorizer(max_df=0.8, min_df=0.1, stop_words=stop_words) 
 
+dataset = 'nyt'
+
 def get_label_embedding(label_dict, input_dir, output_dir):
-    :param label_dict: label dictionary, the same order with model  
-    :param input_dir: input dataset files  
-    :param output_dir: output json files  
+	# :param label_dict: label dictionary, the same order with model  
+	# :param input_dir: input dataset files  
+	# :param output_dir: output json files  
 
 	label_list = []
 	with open(label_dict) as f:
-	    for line in f.readlines():
-	        line = line.rstrip().split('\t')
-	        label_list.append(line[0])
+		for line in f.readlines():
+			line = line.rstrip().split('\t')
+			label_list.append(line[0])
 	label_samples = {}
 	label_embedding = {}
 	with open(input_dir) as f:
@@ -48,4 +50,4 @@ def get_label_embedding(label_dict, input_dir, output_dir):
 			json.dump(instance,f)
 			f.write("\n")
 
-get_label_embedding("./vocab_wos/label.dict", "./data/wos_train.json", "./data/wos_label_desc.json")
+get_label_embedding(f"./vocab_{dataset}/label.dict", f"./data/{dataset}/{dataset}_train.json", f"./data/{dataset}/{dataset}_label_desc.json")

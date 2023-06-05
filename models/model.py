@@ -7,7 +7,8 @@ from models.text_encoder import TextEncoder
 from models.embedding_layer import EmbeddingLayer
 from models.text_feature_propagation import HiMatchTP
 
-from transformers.modeling_bert import BertPreTrainedModel, BertModel
+from transformers.models.bert.modeling_bert import BertPreTrainedModel, BertModel
+
 
 class HiMatch(nn.Module):
     def __init__(self, config, vocab, model_mode='TRAIN'):

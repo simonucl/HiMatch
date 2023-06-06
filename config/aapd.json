@@ -100,7 +100,7 @@
     },
     "device_setting": {
       "device": "cuda",
-      "visible_device_list": "0",
+      "visible_device_list": "1",
       "num_workers": 10
     },
     "checkpoint": {

@@ -79,6 +79,7 @@ class Trainer(object):
             test_performance = self.run_eval(epoch, "TEST")
             if test_performance['micro_f1'] > self.best_performance_test[0]:
                 logger.info('TEST Improve Micro-F1 {}% --> {}%'.format(self.best_performance_test[0], test_performance['micro_f1']))
+                logger.info('TEST Improve Macro-F1 {}% --> {}%'.format(self.best_performance_test[1], test_performance['macro_f1']))
                 self.best_performance_test[0] = test_performance['micro_f1']
 
 
@@ -90,6 +91,7 @@ class Trainer(object):
             test_performance = self.run_eval(epoch, "TEST")
 
             if test_performance['macro_f1'] > self.best_performance_test[1]:
+                logger.info('TEST Improve Micro-F1 {}% --> {}%'.format(self.best_performance_test[0], test_performance['micro_f1']))
                 logger.info('TEST Improve Macro-F1 {}% --> {}%'.format(self.best_performance_test[1], test_performance['macro_f1']))
                 self.best_performance_test[1] = test_performance['macro_f1']
         return performance

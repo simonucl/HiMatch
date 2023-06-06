@@ -118,6 +118,7 @@ if __name__ == "__main__":
 
     if configs.train.device_setting.device == 'cuda':
         os.system('CUDA_VISIBLE_DEVICES=' + str(configs.train.device_setting.visible_device_list))
+        os.environ["CUDA_VISIBLE_DEVICES"] = str(configs.train.device_setting.visible_device_list)
     else:
         os.system("CUDA_VISIBLE_DEVICES=''")
     random.seed(2021)

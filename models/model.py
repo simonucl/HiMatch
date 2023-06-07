@@ -31,7 +31,7 @@ class HiMatch(nn.Module):
         self.model_type = config.model.type
         
         if "bert" in self.model_type:
-            self.bert = BertModel.from_pretrained("bert-base-cased")
+            self.bert = BertModel.from_pretrained("bert-base-uncased")
             self.bert_dropout = nn.Dropout(0.1)
         else:
             self.token_embedding = EmbeddingLayer(

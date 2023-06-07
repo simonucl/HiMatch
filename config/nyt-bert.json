@@ -87,7 +87,7 @@
       "lr_patience": 5,
       "early_stopping": 50
     },
-    "batch_size": 32,
+    "batch_size": 12,
     "start_epoch": 0,
     "end_epoch": 150,
     "refresh_data_loader": 1,
@@ -100,7 +100,7 @@
     },
     "device_setting": {
       "device": "cuda",
-      "visible_device_list": "2",
+      "visible_device_list": "1",
       "num_workers": 10
     },
     "checkpoint": {

@@ -110,14 +110,14 @@
     }
   },
   "eval": {
-    "batch_size": 4,
+    "batch_size": 32,
     "threshold": 0.5,
     "eval_steps": 1000,
     "begin_eval_epoch": 10
   },
   "test": {
     "best_checkpoint": "best_micro_HiAGM-TP",
-    "batch_size": 4
+    "batch_size": 32
   },
   "log": {
     "level": "info",

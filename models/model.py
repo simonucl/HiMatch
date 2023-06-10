@@ -76,6 +76,9 @@ class HiMatch(nn.Module):
         if "bert" not in self.model_type:
             params.append({'params': self.text_encoder.parameters()})
             params.append({'params': self.token_embedding.parameters()})
+        else:
+            params.append({'params': self.bert.parameters()})
+            params.append({'params': self.bert_dropout.parameters()})
         params.append({'params': self.himatch.parameters()})
         return params
 

@@ -158,7 +158,9 @@ class DatasetStatistic(object):
                 # level_num_dict[self.label_trees[label]._depth] += 1
 
                 if label in self.init_prior_prob_dict.keys():
-                    if label in ['Top/Features', 'Top/Opinion', 'Top/Classifieds', 'Top/News']:
+                    # if label in ['Top/Features', 'Top/Opinion', 'Top/Classifieds', 'Top/News']: # nyt
+                    # if label in ["Computer Science", "Physics", "Mathematics", "Computation and Language", "Quantum Physics", "Condensed Matter", "Statistics", "Nonlinear Sciences", "Quantitative Biology"]: # aapd
+                    if label in ["Children\u2019s Books", "Poetry", "Fiction", "Nonfiction", "Teen & Young Adult", "Classics", "Humor"]:
                         prob_dict[ROOT_LABEL][label] += 1
                         self.prior_prob_dict[ROOT_LABEL][label] += 1
                         if 'train' in file_name or 'val' in file_name:

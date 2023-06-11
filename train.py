@@ -72,6 +72,7 @@ def train(config):
     else:
         optimizer = set_optimizer(config, himatch)
         scheduler = None
+    optimizer = set_optimizer(config, himatch)
                                                  
     # get epoch trainer
     trainer = Trainer(model=himatch,

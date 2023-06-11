@@ -87,7 +87,7 @@
       "lr_patience": 5,
       "early_stopping": 50
     },
-    "batch_size": 12,
+    "batch_size": 32,
     "start_epoch": 0,
     "end_epoch": 150,
     "refresh_data_loader": 1,
@@ -110,14 +110,14 @@
     }
   },
   "eval": {
-    "batch_size": 4,
+    "batch_size": 16,
     "threshold": 0.5,
     "eval_steps": 1000,
     "begin_eval_epoch": 10
   },
   "test": {
     "best_checkpoint": "best_micro_HiAGM-TP",
-    "batch_size": 4
+    "batch_size": 16
   },
   "log": {
     "level": "info",

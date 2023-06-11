@@ -73,7 +73,7 @@ class HiMatch(nn.Module):
                           }]
         """
         params = list()
-        if "bert" not in self.model_type:
+        if "bert" not in self.config.model.type:
             params.append({'params': self.text_encoder.parameters()})
             params.append({'params': self.token_embedding.parameters()})
         else:

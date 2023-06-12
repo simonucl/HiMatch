@@ -66,13 +66,13 @@ def train(config):
                                         {'params': [p for n, p in param_optimizer if any(nd in n for nd in no_decay)], 'weight_decay': 0.0}
                                         ]
         warmup_steps = int(t_total * 0.1)
-        optimizer = AdamW(optimizer_grouped_parameters, lr=config.train.optimizer.learning_rate, eps=1e-8)
+        optimizer = set_optimizer(config, himatch)
         scheduler = get_linear_schedule_with_warmup(optimizer, num_warmup_steps=warmup_steps,
                                                     num_training_steps=t_total)
     else:
         optimizer = set_optimizer(config, himatch)
         scheduler = None
-    optimizer = set_optimizer(config, himatch)
+    # optimizer = set_optimizer(config, himatch)
                                                  
     # get epoch trainer
     trainer = Trainer(model=himatch,

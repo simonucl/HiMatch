@@ -126,10 +126,15 @@ class Trainer(object):
                 loss = self.criterion(logits,
                                       batch['label'].to(self.config.train.device_setting.device),
                                       recursive_constrained_params)
+                print('Classification loss: ', loss.item())
+
                 total_loss += loss.item()
 
                 loss_inter, loss_intra = self.criterion_ranking(text_repre, label_repre_positive, label_repre_negative, batch['margin_mask'].to(self.config.train.device_setting.device))
                 self.optimizer.zero_grad()
+                print('Inter loss: ', loss_inter.item())
+                print('intra loss: ', loss_intra.item())
+
                 loss = loss + loss_inter + loss_intra
 
                 loss.backward(retain_graph=True)
@@ -149,5 +154,8 @@ class Trainer(object):
                 predict_results = torch.sigmoid(logits).cpu().tolist()
                 predict_probs.extend(predict_results)
                 target_labels.extend(batch['label_list'])
+                print('Pred: ', torch.where(torch.tensor(predict_results[0]) > 0.5))
+                print('Gold: ', batch['label_list'][0])
+
             logger.info("loss: %f" % (total_loss/len(self.loader_map[mode])))
 

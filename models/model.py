@@ -79,6 +79,8 @@ class HiMatch(nn.Module):
         else:
             params.append({'params': self.bert.parameters()})
             params.append({'params': self.bert_dropout.parameters()})
+        # params.append({'params': self.structure_encoder.parameters()})
+        # params.append({'params': self.structure_encoder_label.parameters()})
         params.append({'params': self.himatch.parameters()})
         return params
 

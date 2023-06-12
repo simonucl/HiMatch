@@ -75,7 +75,7 @@
     },
     "classifier": {
       "num_layer": 1,
-      "output_drop": 0,
+      "output_drop": 1,
       "dropout": 0.5
     }
   },
@@ -87,10 +87,10 @@
       "lr_patience": 5,
       "early_stopping": 50
     },
-    "batch_size": 32,
+    "batch_size": 24,
     "start_epoch": 0,
     "end_epoch": 150,
-    "refresh_data_loader": 1,
+    "refresh_data_loader": 0,
     "loss": {
       "classification": "BCEWithLogitsLoss",
       "recursive_regularization": {
@@ -100,7 +100,7 @@
     },
     "device_setting": {
       "device": "cuda",
-      "visible_device_list": "1",
+      "visible_device_list": "0",
       "num_workers": 10
     },
     "checkpoint": {
@@ -110,14 +110,14 @@
     }
   },
   "eval": {
-    "batch_size": 16,
+    "batch_size": 4,
     "threshold": 0.5,
     "eval_steps": 1000,
-    "begin_eval_epoch": 10
+    "begin_eval_epoch": 5
   },
   "test": {
     "best_checkpoint": "best_micro_HiAGM-TP",
-    "batch_size": 16
+    "batch_size": 4
   },
   "log": {
     "level": "info",
